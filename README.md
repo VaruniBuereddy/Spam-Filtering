@@ -70,7 +70,10 @@ $P(spam|x) = \frac{P(x|spam)*P(spam)}{P(x)}$
 Assuming all term occurences are independent,
 
 ```math
-P(x_1, x_2, x_3 ...,x_M|spam) = P(x_1|spam)*P(x_2|spam)*.... P(x_M|spam) \\ P(x_1 = 1|spam) = p_{i,s} = \frac{\text{No of Spam emails that contain term i}}{\text{No of Spam emails}}
+P(x_1, x_2, x_3 ...,x_M|spam) = P(x_1|spam)*P(x_2|spam)*.... P(x_M|spam) 
+```
+```math
+ P(x_1 = 1|spam) = p_{i,s} = \frac{\text{No of Spam emails that contain term i}}{\text{No of Spam emails}}
 ```
 #### Step - 2: Laplacian Smoothing, find Likelihood/ Conditional probabilities
 
