@@ -75,7 +75,8 @@ P(x_1, x_2, x_3 ...,x_M|spam) = P(x_1|spam)*P(x_2|spam)*.... P(x_M|spam) \\ P(x_
 #### Step - 2: Laplacian Smoothing, find Likelihood/ Conditional probabilities
 
 ```math
-P(x_1 = 1|spam) = p_{i,s} = \frac{\text{No of Spam emails that contain term i + 1}}{\text{No of Spam emails + 2}}\\
+P(x_1 = 1|spam) = p_{i,s} = \frac{\text{No of Spam emails that contain term i + 1}}{\text{No of Spam emails + 2}}```
+```math
 P(x_1 = 0 |spam) = 1 - p_{i,s} \\ 
 P(x_1, x_2,...x_M|spam) = \prod_{i=1}^M p_{i,s}^{x_i} (1-p_{i,s})^{1-x_i}
 $
@@ -85,7 +86,9 @@ $
 
 Applying log to the Bayes theorem, 
 ```math
-\log P(spam|x) = \log P(x|spam) + \log P(spam) - \log P(x) \\
+\log P(spam|x) = \log P(x|spam) + \log P(spam) - \log P(x) 
+```
+```math
 \log P(legit|x) = \log P(x|legit) + \log P(legit) - \log P(x) 
 ```
 
@@ -105,9 +108,10 @@ This is similar to Bernoulli naive bayes except - Multinomial model ignores nega
 - $p_{i, s}$ is estimated differently
 - ${x_i}$ = 1 if term i is in mail x, else 0 (Binary Features)
 ```math
- p_{i,s} = \frac{\text{1 + No of occurences if term i in spam}}{\text{M}+\sum_{i=1}^{M}\text{No of occurences of term i in spam}} \\
+ p_{i,s} = \frac{\text{1 + No of occurences if term i in spam}}{\text{M}+\sum_{i=1}^{M}\text{No of occurences of term i in spam}} 
+ ```
+ ```math
  p(x|spam) = D! \prod_{i=1}^{M} p_{i,s}^{x_i}
-$
 ```
 
 
