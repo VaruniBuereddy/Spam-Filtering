@@ -51,12 +51,12 @@ I(t\in \{0, 1\}, c \in \{0, 1\}) = \frac{N_{11}}{N}\log_2\frac{NN_{11}}{N_{1*}N_
 - $N_{01}$ is the count of emails classified as 'spam', where term 't' is absent
 - $N_{00}$ is the count of the emails that neither have the term 't' , nor belong to 'spam' 
 
-$
+```math
 N_{1*} = N_{10} + N_{11}\\
 N_{*1} = N_{01} + N_{11} \\
 N_{0*} = N_{01} + N_{00} \\ 
 N_{*0} = N_{10} + N_{00}
-$
+```
 
 ## Classifier 
 ### Bernoulli Naive Bayes with Binary Features:
@@ -68,21 +68,26 @@ $
 
 $P(spam|x) = \frac{P(x|spam)*P(spam)}{P(x)}$
 Assuming all term occurences are independent,
-$P(x_1, x_2, x_3 ...,x_M|spam) = P(x_1|spam)*P(x_2|spam)*.... P(x_M|spam) \\ P(x_1 = 1|spam) = p_{i,s} = \frac{\text{No of Spam emails that contain term i}}{\text{No of Spam emails}}$
+
+```math
+P(x_1, x_2, x_3 ...,x_M|spam) = P(x_1|spam)*P(x_2|spam)*.... P(x_M|spam) \\ P(x_1 = 1|spam) = p_{i,s} = \frac{\text{No of Spam emails that contain term i}}{\text{No of Spam emails}}
+```
 #### Step - 2: Laplacian Smoothing, find Likelihood/ Conditional probabilities
-$
+
+```math
 P(x_1 = 1|spam) = p_{i,s} = \frac{\text{No of Spam emails that contain term i + 1}}{\text{No of Spam emails + 2}}\\
 P(x_1 = 0 |spam) = 1 - p_{i,s} \\ 
 P(x_1, x_2,...x_M|spam) = \prod_{i=1}^M p_{i,s}^{x_i} (1-p_{i,s})^{1-x_i}
 $
+```
 
 #### Step - 3: Compare P(spam|x) vs P(legit|x):
 
 Applying log to the Bayes theorem, 
-$
+```math
 \log P(spam|x) = \log P(x|spam) + \log P(spam) - \log P(x) \\
 \log P(legit|x) = \log P(x|legit) + \log P(legit) - \log P(x) 
-$
+```
 
 
 If log P(spam|x) > log P(legit|x) predicted label is spam, else legit. (**Note**: log P(x) cann be ignored, it is present in both the equations)
@@ -99,10 +104,11 @@ After finding the prior, and likelihood, now we have to find the posterior proba
 This is similar to Bernoulli naive bayes except - Multinomial model ignores negative evidence 
 - $p_{i, s}$ is estimated differently
 - ${x_i}$ = 1 if term i is in mail x, else 0 (Binary Features)
-$
+```math
  p_{i,s} = \frac{\text{1 + No of occurences if term i in spam}}{\text{M}+\sum_{i=1}^{M}\text{No of occurences of term i in spam}} \\
  p(x|spam) = D! \prod_{i=1}^{M} p_{i,s}^{x_i}
 $
+```
 
 
 ### Multinomial Naive Bayes with TF
@@ -110,10 +116,10 @@ $
 This is similar to Multinomial Naive Bayes with Binary Features except the features now are not binary anymore, they are the term frequencies.
 - $x_i$ is the ith term frequency in the mail X
 
-$
+```math
  p_{i,s} = \frac{\text{1 + No of occurences if term i in spam}}{\text{M}+\sum_{i=1}^{M}\text{No of occurences of term i in spam}} \\
  p(x|spam) = D! \prod_{i=1}^{M} p_{i,s}^{x_i}
-$
+```
 
 
 ### SVM Spam Filtering:
@@ -125,14 +131,14 @@ $
 
 **Loss:** 
 The Dual Lagrangian loss function which we are trying to maximize is:
-$
+```math
 L_{dual} = \sum_{}\alpha_i – \frac{1}{2} \sum_{i}\sum_{j} \alpha_i\alpha_j y_i y_j K(x_i, x_j)
-$
+```
 
 **Gradient:**
-$
+```math
 \frac{\delta L_{dual}}{\delta \alpha_k} = 1 - y_k \sum_{} \alpha_j y_j K(x_j, x_k)
-$
+```
 
 K(xi, xj) is our Kernal function which could be linear, polynomial or gaussian(rbf).
 
@@ -140,15 +146,15 @@ K(xi, xj) is our Kernal function which could be linear, polynomial or gaussian(r
 - For Gaussian (RBF): $e^{(-1/\sigma^2)||X_1-X_2||^2}$
 
 **Updates:**
-$
+```math
 \alpha_k = \alpha_k + \eta \frac{\delta L_{dual}}{\delta \alpha_k}\\
-$
+```
 
 
 **Prediction:** 
-$
+```math
 \hat{y} = \text{sign}(\sum_{}\alpha_i y_i k(x_i, x_i) + b)
-$
+```
 - Tune the classifier using k-fold cross validation (3 fold). 1 folder is used for testing. Rest of the 9 folders are split into Train and Validation sets ( 6 + 3 = 9). This way, we can find the average precision across different folds. 
 
 - Since, **Precision** is an important metric in case of spam filtering. We want the hyperparameters combination that has maximum precision.
