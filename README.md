@@ -75,7 +75,8 @@ P(x_1, x_2, x_3 ...,x_M|spam) = P(x_1|spam)*P(x_2|spam)*.... P(x_M|spam) \\ P(x_
 #### Step - 2: Laplacian Smoothing, find Likelihood/ Conditional probabilities
 
 ```math
-P(x_1 = 1|spam) = p_{i,s} = \frac{\text{No of Spam emails that contain term i + 1}}{\text{No of Spam emails + 2}}```
+P(x_1 = 1|spam) = p_{i,s} = \frac{\text{No of Spam emails that contain term i + 1}}{\text{No of Spam emails + 2}}
+```
 ```math
 P(x_1 = 0 |spam) = 1 - p_{i,s} \\ 
 P(x_1, x_2,...x_M|spam) = \prod_{i=1}^M p_{i,s}^{x_i} (1-p_{i,s})^{1-x_i}
@@ -121,7 +122,9 @@ This is similar to Multinomial Naive Bayes with Binary Features except the featu
 - $x_i$ is the ith term frequency in the mail X
 
 ```math
- p_{i,s} = \frac{\text{1 + No of occurences if term i in spam}}{\text{M}+\sum_{i=1}^{M}\text{No of occurences of term i in spam}} \\
+ p_{i,s} = \frac{\text{1 + No of occurences if term i in spam}}{\text{M}+\sum_{i=1}^{M}\text{No of occurences of term i in spam}} 
+ ```
+ ```math
  p(x|spam) = D! \prod_{i=1}^{M} p_{i,s}^{x_i}
 ```
 
