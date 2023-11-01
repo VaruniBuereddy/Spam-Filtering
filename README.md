@@ -29,6 +29,8 @@ pip install matplotlib
 
 ## Dataset and Distribution 
 Download the ling-spam dataset from this [link](http://www.aueb.gr/users/ion/data/lingspam_public.tar.gz). Used "lingspam_public01" corpus with both lemmatization and stop-word enabled (under the lemm_stop folder) for this project.
+
+
 ![Alt](images/output_7_0.png)
 
 
@@ -40,9 +42,7 @@ Mutual information is the amount of information that one random variable contain
 
 The two random variables in the above definition are Term ‘T’ and Class ‘C’, where t ∈ T and c ∈ C {Spam, Legit}. 
 
-$
-I(t\in \{0, 1\}, c \in \{0, 1\}) = \frac{N_{11}}{N}\log_2\frac{NN_{11}}{N_{1*}N_{*1}}+ \frac{N_{01}} {N}\log_2\frac{NN_{01}}{N_{0*}N_{*1}} + \frac{N_{10}}{N}\log_2\frac{NN_{10}}{N_{1*}N_{*0}} + \frac{N_{00}}{N}\log_2\frac{NN_{00}}{N_{0*}N_{*0}} 
-$
+$I(t\in \{0, 1\}, c \in \{0, 1\}) = \frac{N_{11}}{N}\log_2\frac{NN_{11}}{N_{1*}N_{*1}}+ \frac{N_{01}} {N}\log_2\frac{NN_{01}}{N_{0*}N_{*1}} + \frac{N_{10}}{N}\log_2\frac{NN_{10}}{N_{1*}N_{*0}} + \frac{N_{00}}{N}\log_2\frac{NN_{00}}{N_{0*}N_{*0}}$
 
 - $N_{11}$ is the number of emails that contain the term 't' and belong to class 'spam' 
 - $N_{10}$ is the number of emails that contain term 't' but do not belong to class 'spam'
@@ -64,14 +64,9 @@ $
 - $x_i$ is either 1 or 0. 0 if the feature is not in the email, 1 if the feature is present.
 #### Step - 1: Bayes Rule:
 
-$
-P(spam|x) = \frac{P(x|spam)*P(spam)}{P(x)}
-$
+$P(spam|x) = \frac{P(x|spam)*P(spam)}{P(x)}$
 Assuming all term occurences are independent,
-$
-P(x_1, x_2, x_3 ...,x_M|spam) = P(x_1|spam)*P(x_2|spam)*.... P(x_M|spam) \\
-P(x_1 = 1|spam) = p_{i,s} = \frac{\text{No of Spam emails that contain term i}}{\text{No of Spam emails}}
-$
+$P(x_1, x_2, x_3 ...,x_M|spam) = P(x_1|spam)*P(x_2|spam)*.... P(x_M|spam) \\ P(x_1 = 1|spam) = p_{i,s} = \frac{\text{No of Spam emails that contain term i}}{\text{No of Spam emails}}$
 #### Step - 2: Laplacian Smoothing, find Likelihood/ Conditional probabilities
 $
 P(x_1 = 1|spam) = p_{i,s} = \frac{\text{No of Spam emails that contain term i + 1}}{\text{No of Spam emails + 2}}\\
