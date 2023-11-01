@@ -78,9 +78,10 @@ P(x_1, x_2, x_3 ...,x_M|spam) = P(x_1|spam)*P(x_2|spam)*.... P(x_M|spam) \\ P(x_
 P(x_1 = 1|spam) = p_{i,s} = \frac{\text{No of Spam emails that contain term i + 1}}{\text{No of Spam emails + 2}}
 ```
 ```math
-P(x_1 = 0 |spam) = 1 - p_{i,s} \\ 
+P(x_1 = 0 |spam) = 1 - p_{i,s} 
+```
+```math
 P(x_1, x_2,...x_M|spam) = \prod_{i=1}^M p_{i,s}^{x_i} (1-p_{i,s})^{1-x_i}
-$
 ```
 
 #### Step - 3: Compare P(spam|x) vs P(legit|x):
