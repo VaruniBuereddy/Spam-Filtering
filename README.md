@@ -52,9 +52,15 @@ I(t\in \{0, 1\}, c \in \{0, 1\}) = \frac{N_{11}}{N}\log_2\frac{NN_{11}}{N_{1*}N_
 - $N_{00}$ is the count of the emails that neither have the term 't' , nor belong to 'spam' 
 
 ```math
-N_{1*} = N_{10} + N_{11}\\
-N_{*1} = N_{01} + N_{11} \\
-N_{0*} = N_{01} + N_{00} \\ 
+N_{1*} = N_{10} + N_{11}
+```
+```math
+N_{*1} = N_{01} + N_{11} 
+```
+```math
+N_{0*} = N_{01} + N_{00}
+```
+```math 
 N_{*0} = N_{10} + N_{00}
 ```
 
