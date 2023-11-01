@@ -42,7 +42,9 @@ Mutual information is the amount of information that one random variable contain
 
 The two random variables in the above definition are Term ‘T’ and Class ‘C’, where t ∈ T and c ∈ C {Spam, Legit}. 
 
-$I(t\in \{0, 1\}, c \in \{0, 1\}) = \frac{N_{11}}{N}\log_2\frac{NN_{11}}{N_{1*}N_{*1}}+ \frac{N_{01}} {N}\log_2\frac{NN_{01}}{N_{0*}N_{*1}} + \frac{N_{10}}{N}\log_2\frac{NN_{10}}{N_{1*}N_{*0}} + \frac{N_{00}}{N}\log_2\frac{NN_{00}}{N_{0*}N_{*0}}$
+```math
+I(t\in \{0, 1\}, c \in \{0, 1\}) = \frac{N_{11}}{N}\log_2\frac{NN_{11}}{N_{1*}N_{*1}}+ \frac{N_{01}} {N}\log_2\frac{NN_{01}}{N_{0*}N_{*1}} + \frac{N_{10}}{N}\log_2\frac{NN_{10}}{N_{1*}N_{*0}} + \frac{N_{00}}{N}\log_2\frac{NN_{00}}{N_{0*}N_{*0}}
+```
 
 - $N_{11}$ is the number of emails that contain the term 't' and belong to class 'spam' 
 - $N_{10}$ is the number of emails that contain term 't' but do not belong to class 'spam'
